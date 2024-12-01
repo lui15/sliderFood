@@ -1,0 +1,174 @@
+body {
+    margin: 0px;
+    font-family: Poppins, serif;
+  }
+  
+  header {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 50px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 10;
+    color: white;
+  }
+  
+  header nav ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap: 30px;
+  }
+  
+  :root {
+    --width-circle: 150vw;
+    --radius: calc(100vw / 6);
+  }
+  
+  .slider {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background-color: #17232a;
+    background-image: radial-gradient(#fff3, transparent 50%);
+    margin-top: -50px;
+  }
+  
+  .slider .list {
+    position: absolute;
+    width: max-content;
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    transition: transform 0.8s;
+  }
+  
+  .slider .list .item {
+    width: calc(var(--radius) * 2);
+    text-align: center;
+    transform: rotate(45deg);
+    transition: transform 1s;
+  }
+  
+  .slider .list .item.active {
+    transform: rotate(0deg);
+  }
+  
+  .slider .list .item img {
+    width: 90%;
+    filter: drop-shadow(0 0 20px #000);
+  }
+  
+  .slider .list .item.active img {
+    filter: none; /* Elimina el desenfoque para la imagen central */
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño */
+    transition: transform 0.5s, filter 0.5s; /* Añade una transición suave */
+  }
+  
+  .slider .content {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: #eee;
+    width: max-content;
+  }
+  
+  .slider .content div:nth-child(2) {
+    font-size: 5rem;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    font-weight: bold;
+    position: relative;
+  }
+  
+  .slider .content div:nth-child(2)::before {
+    position: absolute;
+    left: 60%;
+    bottom: 50%;
+    width: 80px;
+    height: 80px;
+    content: '';
+    background-image: url(/imagen/leaves.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+  .slider .content div:nth-child(1) {
+    text-align: left;
+    text-transform: uppercase;
+    transform: translateY(20px);
+  }
+  
+  .slider .content button {
+    border: 1px solid #eee5;
+    background: transparent;
+    color: #eee;
+    font-family: Poppins, serif;
+    letter-spacing: 5px;
+    border-radius: 20px;
+    padding: 10px 20px;
+  }
+  
+  #prev,
+  #next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 1px solid #eee9;
+    background-color: #eee5;
+    color: #eee;
+    font-size: x-large;
+    font-family: monospace;
+    cursor: pointer;
+    z-index: 15;
+  }
+  
+  #prev {
+    left: 20px;
+  }
+  
+  #next {
+    right: 20px;
+  }
+  
+  /* Circle Styles */
+  
+  .circle {
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: var(--width-circle);
+    height: var(--width-circle);
+    border-radius: 50%;
+    background: radial-gradient(circle, #eee5 100%, transparent);
+    animation: spin 20s linear infinite;
+  }
+  
+  .circle span {
+    display: block;
+    position: absolute;
+    transform-origin: center;
+    animation: spin 20s linear infinite;
+    font-size: 1.2rem;
+    color: #fff;
+  }
+  
+  /* Animación del círculo girando */
+  @keyframes spin {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
